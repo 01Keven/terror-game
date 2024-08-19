@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdctevij6ky6b"]
+
+[ext_resource type="PackedScene" uid="uid://basbegkiq1e6i" path="res://terror-game/map.tscn" id="1_t4ed0"]
+[ext_resource type="PackedScene" uid="uid://dogvaaagd72tq" path="res://terror-game/player.tscn" id="2_ve6ph"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_36q1g"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_nm88d"]
+sky_material = SubResource("ProceduralSkyMaterial_36q1g")
+
+[sub_resource type="Environment" id="Environment_06gk0"]
+background_mode = 2
+sky = SubResource("Sky_nm88d")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_06gk0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(1, 1, 0.337255, 1)
+light_energy = 0.838
+shadow_enabled = true
+
+[node name="Map" parent="." instance=ExtResource("1_t4ed0")]
+transform = Transform3D(3.36064, 0, 0, 0, 1, 0, 0, 0, 4.17399, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_ve6ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0943388, 1.34716, 0.0959975)
+bob_amp = 0.07
